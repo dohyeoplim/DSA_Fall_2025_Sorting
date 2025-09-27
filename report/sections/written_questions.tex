@@ -1,0 +1,211 @@
+%\section{Written Questions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Q1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{question}[Insertion Sort]{
+Implement \code{insertion_sort(…)} in \code{sort.c}. The function takes three arguments: an array of integers, low and high indices to denote the range to be sorted. Thus, the function sorts the array of range \code{[low, high)}. The function must produce the array of integers, whose elements are located in ascending order.
+}
+%\begin{answer}
+\begin{lstlisting}[language=C, style=C]
+void insertion_sort(int arr[], int low, int high)
+{
+    for (int i = low + 1; i < high; i++) {
+        int key = arr[i];
+        int j = i - 1;
+        while (j >= low && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}
+\end{lstlisting}
+%\end{answer}
+\end{question}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Q2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{question_with_subs}[Merge Sort]{}
+%%%%% A %%%%%
+\begin{subq}{Implement \code{merge(…)} in \code{sort.c}. The function takes four arguments: an array of integers, \code{low}, \code{mid}, and \code{high} indices. The \code{low} and \code{high} indices denote the range to be sorted. The \code{mid} is defined by \code{(low + high) / 2}. Therefore, the \code{low} and the \code{mid} denote the start indices of the left and the right subarrays, respectively. The output of the function must be the sorted array of size \code{high - low}.}
+\begin{lstlisting}[language=C, style=C]
+void merge(int arr[], int low, int mid, int high)
+{
+    int n1 = mid - low;
+    int n2 = high - mid;
+
+    int* left = (int*)malloc(sizeof(int) * n1);
+    int* right = (int*)malloc(sizeof(int) * n2);
+
+    for (int i = 0; i < n1; i++)
+        left[i] = arr[low + i];
+    for (int j = 0; j < n2; j++)
+        right[j] = arr[mid + j];
+
+    int i = 0, j = 0, k = low;
+    while (i < n1 && j < n2) {
+        if (left[i] <= right[j]) {
+            arr[k++] = left[i++];
+        } else {
+            arr[k++] = right[j++];
+        }
+    }
+    while (i < n1)
+        arr[k++] = left[i++];
+    while (j < n2)
+        arr[k++] = right[j++];
+
+    free(left);
+    free(right);
+}
+\end{lstlisting}
+\end{subq}
+
+%%%%% B %%%%%
+\begin{subq}{Implement \code{merge_sort(…)} in \code{sort.c.}}
+\begin{lstlisting}[language=C, style=C]
+void merge_sort(int arr[], int low, int high)
+{
+    if (high - low <= 1) return;
+    int mid = low + (high - low) / 2;
+    merge_sort(arr, low, mid);
+    merge_sort(arr, mid, high);
+    merge(arr, low, mid, high);
+}
+\end{lstlisting}
+\end{subq}
+\end{question_with_subs}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Q3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{question_with_subs}[Quick Sort]{}
+%%%%% A %%%%%
+\begin{subq}{Implement \code{partition(…)} in \code{sort.c}. The function takes three arguments: an array of integers, \code{low}, and \code{high} indices. The \code{low} and \code{high} indices denote the range to be partitioned.The function outputs the index of pivot in the partitioned array. For the partitioning, you should select random pivot. Also, you can use \code{swap()} in \code{util.h}}
+\begin{lstlisting}[language=C, style=C]
+int partition(int arr[], int low, int high)
+{
+    int pivot = arr[high - 1];
+    int i = low - 1;
+    for (int j = low; j < high - 1; j++) {
+        if (arr[j] <= pivot) {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i + 1], &arr[high - 1]);
+    return i + 1;
+}
+\end{lstlisting}
+\end{subq}
+
+%%%%% B %%%%%
+\begin{subq}{Implement \code{quick_sort(…)} in \code{sort.c.}}
+\begin{lstlisting}[language=C, style=C]
+void quick_sort(int arr[], int low, int high)
+{
+    if (low < high - 1) {
+        int p = partition(arr, low, high);
+        quick_sort(arr, low, p);
+        quick_sort(arr, p + 1, high);
+    }
+}
+\end{lstlisting}
+\end{subq}
+\end{question_with_subs}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Q4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{question_with_subs}[Comparison of Sorting Algorithms]{}
+%%%%% A %%%%%
+\begin{subq}{Explain the difference between three types of input arrays in \code{main.c}: \code{random_array}, \code{partial_random_array1}, \code{partial_random_array2}.}
+\begin{answer}
+a
+\end{answer}
+\end{subq}
+
+%%%%% B %%%%%
+\begin{subq}{Measure the execution time of three algorithms using input arrays of different size: 10, 30, 50, 100, 500, 1000, 10000, 100000, 1000000, 10000000. Plot graph to compare the execution time of three algorithm for each type of random array.}
+\begin{answer}
+a	
+\end{answer}
+\end{subq}
+
+%%%%% C %%%%%
+\begin{subq}{Let’s consider \code{random_array} data. Which algorithm is the best when the array size is small (e.g., 10, 30, 50). Explain why.}
+\begin{answer}
+a	
+\end{answer}
+\end{subq}
+
+%%%%% D %%%%%
+\begin{subq}{Let’s consider \code{random_array} data. Which algorithm becomes the eventually winner? Explain why.}
+\begin{answer}
+a	
+\end{answer}
+\end{subq}
+
+%%%%% E %%%%%
+\begin{subq}{Let’s consider the insertion sort algorithm. Which types of input arrays does insert sort have an advantage over other algorithms? Explain why.}
+\begin{answer}
+a	
+\end{answer}
+\end{subq}
+
+%%%%% F %%%%%
+\begin{subq}{Explain why quick sort is faster than merge sort.}
+\begin{answer}
+a	
+\end{answer}
+\end{subq}
+
+%%%%% G %%%%%
+\begin{subq}{Explain the advantages that merge sort has over quick sort.}
+\begin{answer}
+a	
+\end{answer}
+\end{subq}
+\end{question_with_subs}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Q5
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{question_with_subs}[Faster Merge Sort]{}
+%%%%% A %%%%%
+\begin{subq}{Implement the fast merge sort algorithm. The improved version divides the input array only until the size of the subarrays becomes less than 32. It then perform the insertion sort to conquer these small subarrays.}
+\begin{answer}
+a
+\end{answer}
+\end{subq}
+
+%%%%% B %%%%%
+\begin{subq}{Compare the fast merge sort with its original one on the settings of problem 4.B.  Is performance improvement observable? Explain why it is faster.}
+\begin{answer}
+a	
+\end{answer}
+\end{subq}
+
+%%%%% C %%%%%
+\begin{subq}{Implement the faster merge sort algorithm by modifying the fast merge sort. This version first determine the necessity of merge operation before merging, and then skips the merge operation, when it is unnecessary.}
+\begin{answer}
+a	
+\end{answer}
+\end{subq}
+
+%%%%% D %%%%%
+\begin{subq}{For which types of input array will this version produce performance improvements?. Explain why.}
+\begin{answer}
+a	
+\end{answer}
+\end{subq}
+\end{question_with_subs}
+
+

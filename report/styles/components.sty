@@ -1,0 +1,70 @@
+\newcommand{\assignment}[3]{
+\thispagestyle{plain}
+\newpage
+\setcounter{page}{1}
+\noindent
+
+\begin{center}
+	\framebox{ \vbox{
+		\vspace{2mm}
+		\hbox to 6.28in
+		{DSA II #1 \hfill}
+		\vspace{4mm}
+		\hbox to 6.28in
+		{\large\bf\mbox{Homework #2 - Sorting}}
+		\vspace{4mm}
+		\hbox to 6.28in
+		{\small{\bf Name: } 임도협 (Dohyeop Lim)\hfill}
+		\vspace{1mm}
+		{\small{\bf StudentID: } 24101518 \hfill}
+		\vspace{2mm}
+	}}
+\end{center}
+}
+
+\newenvironment{question}[2][]{%
+    \refstepcounter{enumi}%
+    \par\medskip
+    \noindent\textbf{[\theenumi.~#1]}\par\nopagebreak
+    \if\relax\detokenize{#2}\relax
+    \else
+        \par\medskip\noindent#2\par\medskip
+    \fi
+}{%
+    \medskip
+}
+
+\newenvironment{question_with_subs}[2][]{%
+    \refstepcounter{enumi}%
+    \par\medskip
+    \noindent\textbf{[\theenumi.~#1]}\par\nopagebreak
+    \if\relax\detokenize{#2}\relax
+    \else
+        \par\medskip\noindent#2\par\medskip
+    \fi
+    \begin{enumerate}[label=\Alph*.]
+}{%
+    \end{enumerate}
+    \medskip
+}
+
+\newenvironment{subq}{%
+    \item \par
+}{%
+}
+
+\newmdenv[
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  leftline=true,
+  linecolor=gray!15,
+  linewidth=2pt,
+  innertopmargin=0.5em,
+  innerbottommargin=0.5em,
+  innerleftmargin=0.8em,
+  skipabove=1em,
+  skipbelow=1em
+]{answer}
+
+\newcommand{\code}{\lstinline}
