@@ -37,6 +37,10 @@ int main(int argc, char *argv[])
         sort_fn = insertion_sort;
     } else if (strcmp(algo, "merge") == 0) {
         sort_fn = merge_sort;
+    } else if (strcmp(algo, "merge2") == 0) {
+        sort_fn = merge_sort_2;
+    } else if (strcmp(algo, "merge3") == 0) {
+        sort_fn = merge_sort_3;
     } else if (strcmp(algo, "quick") == 0) {
         sort_fn = quick_sort;
     } else {
