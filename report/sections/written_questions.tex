@@ -3,7 +3,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Q1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{question}[Insertion Sort]{
+\begin{question}[1. Insertion Sort]{
 Implement \code{insertion_sort(…)} in \code{sort.c}. The function takes three arguments: an array of integers, low and high indices to denote the range to be sorted. Thus, the function sorts the array of range \code{[low, high)}. The function must produce the array of integers, whose elements are located in ascending order.
 }
 %\begin{answer}
@@ -28,7 +28,7 @@ void insertion_sort(int arr[], int low, int high)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Q2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{question_with_subs}[Merge Sort]{}
+\begin{question_with_subs}[2. Merge Sort]{}
 %%%%% A %%%%%
 \begin{subq}{Implement \code{merge(…)} in \code{sort.c}. The function takes four arguments: an array of integers, \code{low}, \code{mid}, and \code{high} indices. The \code{low} and \code{high} indices denote the range to be sorted. The \code{mid} is defined by \code{(low + high) / 2}. Therefore, the \code{low} and the \code{mid} denote the start indices of the left and the right subarrays, respectively. The output of the function must be the sorted array of size \code{high - low}.}
 \begin{lstlisting}[language=C, style=C]
@@ -83,7 +83,7 @@ void merge_sort(int arr[], int low, int high)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Q3
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{question_with_subs}[Quick Sort]{}
+\begin{question_with_subs}[3. Quick Sort]{}
 %%%%% A %%%%%
 \begin{subq}{Implement \code{partition(…)} in \code{sort.c}. The function takes three arguments: an array of integers, \code{low}, and \code{high} indices. The \code{low} and \code{high} indices denote the range to be partitioned.The function outputs the index of pivot in the partitioned array. For the partitioning, you should select random pivot. Also, you can use \code{swap()} in \code{util.h}}
 \begin{lstlisting}[language=C, style=C]
@@ -122,7 +122,7 @@ void quick_sort(int arr[], int low, int high)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Q4
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{question_with_subs}[Comparison of Sorting Algorithms]{}
+\begin{question_with_subs}[4. Comparison of Sorting Algorithms]{}
 %%%%% A %%%%%
 \begin{subq}{Explain the difference between three types of input arrays in \code{main.c}: \code{random_array}, \code{partial_random_array1}, \code{partial_random_array2}.}
 \begin{answer}
@@ -178,7 +178,7 @@ a
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Q5
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{question_with_subs}[Faster Merge Sort]{}
+\begin{question_with_subs}[5. Faster Merge Sort]{}
 %%%%% A %%%%%
 \begin{subq}{Implement the fast merge sort algorithm. The improved version divides the input array only until the size of the subarrays becomes less than 32. It then perform the insertion sort to conquer these small subarrays.}
 \begin{answer}

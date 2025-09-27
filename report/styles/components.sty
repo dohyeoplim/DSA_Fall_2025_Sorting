@@ -25,7 +25,7 @@
 \newenvironment{question}[2][]{%
     \refstepcounter{enumi}%
     \par\medskip
-    \noindent\textbf{[\theenumi.~#1]}\par\nopagebreak
+    \noindent\textbf{[#1]}\par\nopagebreak
     \if\relax\detokenize{#2}\relax
     \else
         \par\medskip\noindent#2\par\medskip
@@ -37,7 +37,7 @@
 \newenvironment{question_with_subs}[2][]{%
     \refstepcounter{enumi}%
     \par\medskip
-    \noindent\textbf{[\theenumi.~#1]}\par\nopagebreak
+    \noindent\textbf{[#1]}\par\nopagebreak
     \if\relax\detokenize{#2}\relax
     \else
         \par\medskip\noindent#2\par\medskip
