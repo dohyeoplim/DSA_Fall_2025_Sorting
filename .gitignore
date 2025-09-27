@@ -394,3 +394,5 @@ TSWLatexianTemp*
 *.docx
 
 sort
+
+.DS_Store

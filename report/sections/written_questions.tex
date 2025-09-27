@@ -214,11 +214,11 @@ void merge_sort_2(int arr[], int low, int high)
 %%%%% B %%%%%
 \begin{subq}{Compare the fast merge sort with its original one on the settings of problem 4.B.  Is performance improvement observable? Explain why it is faster.}
 \begin{answer}
-\textbf{Yes}. The fast merge sort is consistently faster across all input types.\\
-From the data: at $n{=}1{,}000{,}000$, original merge sort takes $0.136$ sec on \code{random_array}, while fast merge sort takes $0.105$ sec.  
-At $n{=}10{,}000{,}000$, the original is $1.57$ sec, but the fast version is $1.27$ sec.  
-The reason is that the fast version switches to insertion sort when subarrays are below size $32$. Insertion sort runs very efficiently on these small (and nearly sorted) chunks, so recursion overhead is reduced.\\
-Both algorithms remain $O(n \log n)$ in complexity, but the hybrid approach gains a practical speedup.
+\textbf{Yes}. The fast merge sort (merge2) is consistently faster than the original across all input types.  
+At $n{=}1{,}000{,}000$ the original merge sort takes $0.136$ sec on \code{random_array} while merge2 takes $0.105$ sec.
+At $n{=}10{,}000{,}000$ the original takes $1.57$ sec while merge2 takes $1.27$ sec.
+The improvement comes from switching to insertion sort when subarrays are below size $32$. Insertion sort is very efficient on small and nearly sorted chunks so recursion overhead is reduced.
+Both algorithms are still $O(n \log n)$ but the hybrid design shows a clear practical speedup!
 \end{answer}
 \begin{figure}[h!]
 	\centering
@@ -270,6 +270,9 @@ The reason is that merge3 skips unnecessary merges. So on fully random arrays, i
 \newpage
 \appendix
 \section*{\small Appendix}
+
+\small\noindent\textit{Source code available at \url{https://github.com/dohyeoplim/DSA_Fall_2025_Sorting}}
+
 \renewcommand{\arraystretch}{1}
 \begin{table*}[h!]
 \centering
